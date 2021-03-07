@@ -33,7 +33,7 @@ class command(commands.Cog):
 
     @commands.command()
     async def ping(self, ctx):
-        await ctx.send(f"pong!")
+        await ctx.send(f"pong! {round(self.client.latency * 1000)} ms")
 
 
 def setup(client):
