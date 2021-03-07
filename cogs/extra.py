@@ -19,14 +19,16 @@ class extra(commands.Cog):
     @commands.Cog.listener()
     async def on_message(self, message):
     #to make sure it does not react to itself
-        if message.author.id == self.client.user:
-            return
+        if ("pizza") in message.content.lower():
 
-        elif ("pizza") in message.content.lower():
-            await message.channel.send ('did someone say pizza?')
-            sleep(1)
-            await message.channel.send ('https://tenor.com/view/spider-man-pizza-time-pizza-day-pizza-dinner-gif-16271126')
+            if message.author.id != self.client.user.id:
+                await message.channel.send ('did someone say pizza?')
+                sleep(1)
+                await message.channel.send ('https://tenor.com/view/spider-man-pizza-time-pizza-day-pizza-dinner-gif-16271126')
 
+
+            else:
+                return
         else:
             return
 
