@@ -1,3 +1,8 @@
+# By TLD136
+# 25-2-2021
+########################
+
+
 import discord
 from discord.ext import commands
 import os

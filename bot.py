@@ -24,29 +24,6 @@ async def on_ready():
     print("Ready")
 
 
-# code for per server prefixes
-@client.event
-async def on_guild_join(guild):
-    with open('prefixes.json', 'r') as f:
-        prefixes = json.load(f)
-
-    prefixes[str(guild.id)] = '!'
-
-    with open ('prefixes.json', 'w') as f:
-        json.dump(prefixes, f , indent=4)
-
-
-@client.event
-async def on_guild_remove(guild):
-    with open('prefixes.json' , 'r') as f:
-        prefixes = json.load(f)
-
-    prefixes.pop(str(guild.id))
-
-    with open('prefixes.json', 'w') as f:
-        json.dump(prefixes, f , indent=4)
-
-
 #load and unload the cogs
 @client.command()
 async def load(ctx, extension):

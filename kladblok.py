@@ -1,6 +1,12 @@
+# By TLD136
+# 25-2-2021
+########################
+
+
 import discord
 from discord.ext import commands
 from time import sleep
+import json
 
 client = commands.Bot(command_prefix = '!')
 
@@ -45,4 +51,38 @@ async def clear(ctx, amount : int):
     await ctx.chanel.purge(limit=amount)
 
 
-    
+
+
+
+
+# code for per server prefixes
+
+
+def get_prefix(client, message):
+    with open('prefixes.json', 'r') as f:
+        prefixes = json.load(f)
+
+    return prefixes[str(message.guild.id)]
+
+
+
+@client.event
+async def on_guild_join(guild):
+    with open('prefixes.json', 'r') as f:
+        prefixes = json.load(f)
+
+    prefixes[str(guild.id)] = '!'
+
+    with open ('prefixes.json', 'w') as f:
+        json.dump(prefixes, f , indent=4)
+
+
+@client.event
+async def on_guild_remove(guild):
+    with open('prefixes.json' , 'r') as f:
+        prefixes = json.load(f)
+
+    prefixes.pop(str(guild.id))
+
+    with open('prefixes.json', 'w') as f:
+        json.dump(prefixes, f , indent=4)
