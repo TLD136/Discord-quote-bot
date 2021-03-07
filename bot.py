@@ -9,7 +9,7 @@ import os
 from time import sleep
 import json
 
-def get_prefix(client, message):       #somehow did not work
+def get_prefix(client, message):
     with open('prefixes.json', 'r') as f:
         prefixes = json.load(f)
 
@@ -41,7 +41,7 @@ for filename in os.listdir('./cogs'):
 async def reload(ctx, extension):
     client.unload_extension(f'cogs.{extension}')
     client.load_extension(f'cogs.{extension}')
-
+    await ctx.send(f'reloaded {extension}')
 
 f = open('token.txt','rt')
 token = f.read(59)

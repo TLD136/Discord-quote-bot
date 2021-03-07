@@ -39,7 +39,7 @@ async def on_message(message):
     if message.author.id == client.user.id:
         return
 
-    if str("pizza") in message.content.lower():
+    else ("pizza") in message.content.lower():
         await message.channel.send ('did someone say pizza?')
         sleep(1)
         await message.channel.send ('https://tenor.com/view/spider-man-pizza-time-pizza-day-pizza-dinner-gif-16271126')

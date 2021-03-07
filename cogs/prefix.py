@@ -16,13 +16,6 @@ class prefix(commands.Cog):
         self.client = client
 
 
-    def get_prefix(self, client, message):
-        with open('prefixes.json', 'r') as f:
-            prefixes = json.load(f)
-
-        return prefixes[str(message.guild.id)]
-    
-
     @commands.command()
     async def changeprefix(self, ctx, prefix):
         with open('prefixes.json', 'r') as f:

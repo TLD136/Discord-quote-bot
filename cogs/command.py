@@ -25,7 +25,10 @@ class command(commands.Cog):
 
 
 
-
+    @commands.command()
+    async def clear(self, ctx, amount : int):
+        amount = amount + 1
+        await ctx.channel.purge(limit=amount)
 
 
     @commands.command()

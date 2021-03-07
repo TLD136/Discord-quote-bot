@@ -12,13 +12,8 @@ import json
 
 class extra(commands.Cog):
 
-    def __init__(self,client):
+    def __init__(self, client):
         self.client = client
-
-
-
-
-
 
 
 
