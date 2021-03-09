@@ -43,8 +43,10 @@ async def reload(ctx, extension):
     client.load_extension(f'cogs.{extension}')
     await ctx.send(f'reloaded {extension}')
 
-f = open('token.txt','rt')
-token = f.read(59)
-f.close
+def get_token():
+    f = open('token.txt','rt')
+    token = f.read(59)
+    f.close
+    return token
 
-client.run(token)
+client.run(get_token())
