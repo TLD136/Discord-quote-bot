@@ -9,6 +9,12 @@ import os
 from time import sleep
 import json
 
+def get_token():
+    f = open('token.txt','rt')
+    token = f.read(59)
+    f.close
+    return token
+
 def get_prefix(client, message):
     with open('prefixes.json', 'r') as f:
         prefixes = json.load(f)
@@ -43,10 +49,5 @@ async def reload(ctx, extension):
     client.load_extension(f'cogs.{extension}')
     await ctx.send(f'reloaded {extension}')
 
-def get_token():
-    f = open('token.txt','rt')
-    token = f.read(59)
-    f.close
-    return token
 
 client.run(get_token())

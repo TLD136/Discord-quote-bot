@@ -17,11 +17,29 @@ class command(commands.Cog):
 
 
 
+    @commands.command()         # this and the who am i command does not work yet
+    async def quote(self, ctx, user):
+        oldestMessage = None
+        for channel in ctx.guild.text_channels:
+            fetchMessage = await channel.history().find(lambda m: m.author.id == user.id)
+            if fetchMessage == None:
+                continue
 
 
+            if oldestMessage != None:
+                oldestMessage = fetchMessage
+            else:
+                if fetchMessage.created_at > oldestMessage.created_at:
+                    oldestMessage = fetchMessage
 
+        if (oldestMessage is not None):
+            await ctx.send(f"Oldest message is {oldestMessage.content}")
+        else:
+            await ctx.send("No message found.")
 
-
+    @commands.command()
+    async def whoami(self, ctx, user):
+        ctx.send(f'name: {user.name()}\n id: {user.id()}\n discriminator: {user.discriminator()}')
 
 
 
