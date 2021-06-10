@@ -22,7 +22,7 @@ def get_prefix(client, message):
     return prefixes[str(message.guild.id)]
 
 
-client = commands.Bot(command_prefix = '!')
+client = commands.Bot(command_prefix = get_prefix)
 
 @client.event
 async def on_ready():
